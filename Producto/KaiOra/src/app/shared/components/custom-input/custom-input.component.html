@@ -1,3 +1,4 @@
-<p>
-  custom-input works!
-</p>
+<ion-item class="custom-input" lines="none">
+  <ion-icon color="tertiary" *ngIf="icon" slot="start" name="add" [name]="icon"></ion-icon>
+  <ion-input></ion-input>
+</ion-item>
