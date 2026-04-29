@@ -1,5 +1,18 @@
 <app-header title = "Login"></app-header>
 
 <ion-content [fullscreen]="true">
-  <app-custom-input></app-custom-input>
+  <form [formGroup] ="form">
+    <app-custom-input 
+    icon="mail-outline"
+    autocomplete="email"
+    [control] ="form.controls.email"
+    type="email"
+    label="email"
+    ></app-custom-input>
+    <app-custom-input icon="lock-closed-outline"
+    [control] ="form.controls.password"
+    type="password"
+    label="password"
+    ></app-custom-input>
+  </form>
 </ion-content>
