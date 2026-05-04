@@ -1,0 +1,223 @@
+// ============================================================================
+// AUTH PAGE STYLES - KAIORA
+// ============================================================================
+
+@import '../../../theme/variables.scss';
+
+ion-content.auth-content {
+  --background: #{$color-bg-primary};
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: $space-lg;
+  background: linear-gradient(135deg, $color-bg-primary 0%, $color-bg-secondary 100%);
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 450px;
+  padding: $space-2xl $space-lg;
+  background: $color-bg-primary;
+  border-radius: $border-radius-2xl;
+  box-shadow: $shadow-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+  animation: slideInUp $transition-slow;
+}
+
+// ============================================================================
+// SECCIONES DEL FORMULARIO
+// ============================================================================
+
+.form-header {
+  text-align: center;
+  margin-bottom: $space-md;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+// ============================================================================
+// VALIDADORES
+// ============================================================================
+
+.validators {
+  @include typography($typography-label-xs);
+  color: $color-danger;
+  text-align: center;
+  padding: $space-xs $space-sm;
+  background-color: rgba($color-danger, 0.05);
+  border-radius: $border-radius-md;
+  border-left: 3px solid $color-danger;
+  animation: slideInDown $transition-base;
+
+  div {
+    margin: 0;
+    font-weight: $font-weight-medium;
+  }
+
+  div:not(:last-child) {
+    margin-bottom: $space-xs;
+  }
+}
+
+// ============================================================================
+// BOTÓN SUBMIT
+// ============================================================================
+
+.form-actions {
+justify-content: center;
+  display: flex;
+  gap: $space-md;
+  margin-top: $space-md;
+
+  .submit-btn {
+    @include typography($typography-button);
+    --background: #{$color-secondary};
+    --background-hover: #{$color-secondary-dark};
+    --background-activated: #{$color-secondary-dark};
+    --color: white;
+    --color-hover: white;
+    --border-radius: #{$border-radius-xl};
+    --padding-start: #{$space-lg};
+    --padding-end: #{$space-lg};
+    --padding-top: #{$space-md};
+    --padding-bottom: #{$space-md};
+    --min-height: 50px;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-wide;
+    transition: all $transition-base;
+    box-shadow: $shadow-md;
+
+    &:not([disabled]):hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-lg;
+    }
+
+    &[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    &.ion-activated {
+      transform: translateY(0);
+    }
+  }
+}
+
+// ============================================================================
+// ENLACE OLVIDÉ CONTRASEÑA
+// ============================================================================
+
+.forgot-password {
+  text-align: center;
+  margin-top: $space-md;
+
+  p {
+    @include typography($typography-body-sm);
+    color: $color-text-secondary;
+    margin: 0;
+  }
+
+  .forgot-link {
+    @include typography($typography-body-sm);
+    color: $color-secondary;
+    text-decoration: none;
+    font-weight: $font-weight-medium;
+    transition: all $transition-base;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: $color-secondary;
+      transition: width $transition-base;
+    }
+
+    &:hover {
+      color: $color-secondary-dark;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &:active {
+      color: $color-secondary-dark;
+    }
+  }
+}
+
+// ============================================================================
+// RESPONSIVE DESIGN
+// ============================================================================
+
+@include respond-to('sm') {
+  .auth-container {
+    padding: $space-md;
+  }
+
+  .auth-form {
+    padding: $space-xl $space-md;
+    border-radius: $border-radius-lg;
+  }
+}
+
+@include respond-to('md') {
+  .auth-container {
+    padding: $space-2xl;
+  }
+
+  .auth-form {
+    padding: $space-3xl $space-2xl;
+    max-width: 500px;
+  }
+}
+
+// ============================================================================
+// ANIMACIONES ESPECÍFICAS
+// ============================================================================
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
