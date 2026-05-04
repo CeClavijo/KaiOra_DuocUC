@@ -1,0 +1,32 @@
+<app-header title="Inicio Profesor"></app-header>
+
+<ion-content class="ion-padding">
+  <h2>Bienvenido Chef</h2>
+  <p>Administra tus fichas técnicas y supervisa el progreso de tus módulos de formación culinaria.</p>
+
+  <ion-button (click)="click()" expand="block" mode="ios" class="add-button-custom">
+    <ion-icon slot="start" name="add-outline"></ion-icon>
+    Click me
+  </ion-button>
+
+  <!-- ion card placeholder -->
+  <ion-card>
+    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <ion-card-header>
+      <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      Awesome content
+    </ion-card-content>
+
+    <ion-button fill="clear">
+      <ion-icon slot="start" name="pencil-outline"></ion-icon>
+      Editar
+    </ion-button>
+    <ion-button fill="clear">
+      <ion-icon slot="start" name="share-social-outline"></ion-icon>
+      Compartir
+    </ion-button>
+  </ion-card>
+</ion-content>
