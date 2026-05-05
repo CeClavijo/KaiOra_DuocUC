@@ -1,3 +1,57 @@
 .add-button-custom {
     padding-top: 12px;
+    --background: #204E2B;
+    --background-hover: #204E2B;
+    --background-activated: #204E2B;
+}
+
+.info-color {
+    --color: #204E2B;
+    color: #204E2B;
+}
+
+.view-color {
+    --color: #765A05;
+    color: #765A05;
+}
+
+.grade-color {
+    --color: #80240C;
+    color: #80240C;
+}
+
+.card-metadata {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  .custom-badge {
+    /* Color amarillento de tu imagen */
+    --background: #fde087; 
+    color: #836b1d;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
+  .views-container {
+    display: flex;
+    align-items: center;
+    color: #4a4a4a; // Gris oscuro
+    font-size: 0.9em;
+
+    ion-icon {
+      margin-right: 4px;
+      font-size: 1.2em;
+    }
+  }
+}
+
+.card-title {
+  color: #1a472a; // Verde oscuro del ejemplo
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin: 10px 0;
 }
