@@ -1,8 +1,12 @@
 // ============================================================================
-// AUTH PAGE STYLES - KAIORA
+// AUTH PAGE STYLES - KAIORA (FINAL OPTIMIZADO)
 // ============================================================================
 
 @import '../../../theme/variables.scss';
+
+// ============================================================================
+// CONTENEDOR PRINCIPAL
+// ============================================================================
 
 ion-content.auth-content {
   --background: #{$color-bg-primary};
@@ -10,49 +14,112 @@ ion-content.auth-content {
   --padding-end: 0;
   --padding-top: 0;
   --padding-bottom: 0;
+  --offset-bottom: 0;
+
+  ion-content {
+    overflow: hidden !important;
+  }
 }
 
 .auth-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  min-height: 100vh;
-  padding: $space-lg;
+  height: 100vh;
+  width: 100%;
+  padding: $space-sm $space-md;
   background: linear-gradient(135deg, $color-bg-primary 0%, $color-bg-secondary 100%);
+  box-sizing: border-box;
+  overflow-y: auto;
 }
+
+// ============================================================================
+// FORMULARIO
+// ============================================================================
 
 .auth-form {
   width: 100%;
-  max-width: 450px;
-  padding: $space-2xl $space-lg;
+  max-width: 400px;
+  padding: $space-lg $space-md;
   background: $color-bg-primary;
   border-radius: $border-radius-2xl;
   box-shadow: $shadow-lg;
   display: flex;
   flex-direction: column;
-  gap: $space-lg;
+  gap: $space-sm;
   animation: slideInUp $transition-slow;
+  flex-shrink: 0;
 }
 
 // ============================================================================
-// SECCIONES DEL FORMULARIO
+// HEADER DEL FORMULARIO
 // ============================================================================
 
 .form-header {
   text-align: center;
-  margin-bottom: $space-md;
+  margin-bottom: $space-sm;
+
+  ::ng-deep .logo-container {
+    gap: $space-md;
+    margin-bottom: 0;
+  }
+
+  ::ng-deep .logo-wrapper {
+    .logo-image {
+      width: 80px;
+      height: 80px;
+      animation: slideInDown $transition-base;
+    }
+  }
+
+  ::ng-deep .logo-text {
+    .logo-title {
+      @include typography($typography-h3);
+      color: $color-primary;
+      margin: $space-sm 0 0 0;
+      font-size: 22px;
+      line-height: $line-height-tight;
+    }
+
+    .logo-subtitle {
+      @include typography($typography-body-sm);
+      color: $color-text-secondary;
+      margin: $space-xs 0 0 0;
+      font-size: 12px;
+      line-height: $line-height-normal;
+    }
+  }
 }
+
+// ============================================================================
+// INPUTS DEL FORMULARIO
+// ============================================================================
 
 .form-inputs {
   display: flex;
   flex-direction: column;
-  gap: $space-md;
+  gap: $space-xs;
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-  gap: $space-sm;
+  gap: 2px;
+
+  ::ng-deep .custom-input {
+    margin: 0;
+    --padding-start: #{$space-md};
+    --padding-end: #{$space-md};
+    --padding-top: #{$space-sm};
+    --padding-bottom: #{$space-sm};
+    --min-height: 50px;
+
+    ion-label {
+      font-size: 11px;
+      margin-bottom: 0;
+    }
+  }
 }
 
 // ============================================================================
@@ -68,6 +135,8 @@ ion-content.auth-content {
   border-radius: $border-radius-md;
   border-left: 3px solid $color-danger;
   animation: slideInDown $transition-base;
+  font-size: 11px;
+  line-height: $line-height-tight;
 
   div {
     margin: 0;
@@ -75,19 +144,19 @@ ion-content.auth-content {
   }
 
   div:not(:last-child) {
-    margin-bottom: $space-xs;
+    margin-bottom: 2px;
   }
 }
 
 // ============================================================================
-// BOTÓN SUBMIT
+// BOTÓN SUBMIT - CENTRADO
 // ============================================================================
 
 .form-actions {
-justify-content: center;
   display: flex;
+  justify-content: center;
   gap: $space-md;
-  margin-top: $space-md;
+  margin-top: $space-sm;
 
   .submit-btn {
     @include typography($typography-button);
@@ -97,15 +166,19 @@ justify-content: center;
     --color: white;
     --color-hover: white;
     --border-radius: #{$border-radius-xl};
-    --padding-start: #{$space-lg};
-    --padding-end: #{$space-lg};
-    --padding-top: #{$space-md};
-    --padding-bottom: #{$space-md};
-    --min-height: 50px;
+    --padding-start: #{$space-xl};
+    --padding-end: #{$space-xl};
+    --padding-top: #{$space-sm};
+    --padding-bottom: #{$space-sm};
+    --min-height: 48px;
     font-weight: $font-weight-semibold;
+    font-size: 16px;
     letter-spacing: $letter-spacing-wide;
     transition: all $transition-base;
     box-shadow: $shadow-md;
+    margin: 0;
+    width: auto;
+    max-width: 250px;
 
     &:not([disabled]):hover {
       transform: translateY(-2px);
@@ -124,17 +197,19 @@ justify-content: center;
 }
 
 // ============================================================================
-// ENLACE OLVIDÉ CONTRASEÑA
+// ENLACES - ¿OLVIDASTE CONTRASEÑA?
 // ============================================================================
 
 .forgot-password {
   text-align: center;
-  margin-top: $space-md;
+  margin-top: $space-xs;
 
   p {
     @include typography($typography-body-sm);
     color: $color-text-secondary;
     margin: 0;
+    font-size: 12px;
+    line-height: $line-height-normal;
   }
 
   .forgot-link {
@@ -144,6 +219,7 @@ justify-content: center;
     font-weight: $font-weight-medium;
     transition: all $transition-base;
     position: relative;
+    font-size: 12px;
 
     &::after {
       content: '';
@@ -171,28 +247,76 @@ justify-content: center;
 }
 
 // ============================================================================
-// RESPONSIVE DESIGN
+// PÁRRAFO DE CONTACTO - DISCLAIMER
 // ============================================================================
 
-@include respond-to('sm') {
-  .auth-container {
-    padding: $space-md;
-  }
+.contact-disclaimer {
+  text-align: center;
+  margin-top: 0;
 
-  .auth-form {
-    padding: $space-xl $space-md;
-    border-radius: $border-radius-lg;
+  p {
+    @include typography($typography-label-xs);
+    color: $color-text-secondary;
+    margin: 0;
+    font-size: 10px;
+    line-height: $line-height-tight;
+    font-weight: $font-weight-regular;
   }
 }
 
-@include respond-to('md') {
-  .auth-container {
-    padding: $space-2xl;
+// ============================================================================
+// FOOTER - EN LÍNEA HORIZONTAL
+// ============================================================================
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-xs;
+  padding: $space-lg $space-md $space-sm $space-md;
+  width: 100%;
+  text-align: center;
+  flex-shrink: 0;
+
+  .footer-image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    opacity: 0.6;
   }
 
-  .auth-form {
-    padding: $space-3xl $space-2xl;
-    max-width: 500px;
+  // Contenedor de enlaces en fila
+  div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+    align-items: center;
+    width: 100%;
+  }
+
+  // Contenedor para los enlaces en línea
+  a {
+    @include typography($typography-label-xs);
+    color: $color-text-secondary;
+    text-decoration: none;
+    transition: all $transition-base;
+    font-size: 11px;
+    font-weight: $font-weight-regular;
+    padding: 0 $space-xs;
+    display: inline-block;
+
+    &:hover {
+      color: $color-primary;
+      text-decoration: underline;
+    }
+  }
+
+  // Separadores entre enlaces
+  a:not(:last-child)::after {
+    content: '•';
+    margin-left: $space-sm;
+    color: $color-text-light;
   }
 }
 
@@ -202,7 +326,7 @@ justify-content: center;
 
 @keyframes slideInUp {
   from {
-    transform: translateY(30px);
+    transform: translateY(20px);
     opacity: 0;
   }
   to {
@@ -220,4 +344,127 @@ justify-content: center;
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+// ============================================================================
+// RESPONSIVE DESIGN - TABLET
+// ============================================================================
+
+@include respond-to('md') {
+  .auth-container {
+    padding: $space-lg;
+  }
+
+  .auth-form {
+    padding: $space-2xl $space-lg;
+    max-width: 450px;
+
+    .form-header {
+      margin-bottom: $space-md;
+
+      ::ng-deep .logo-wrapper .logo-image {
+        width: 100px;
+        height: 100px;
+      }
+
+      ::ng-deep .logo-text .logo-title {
+        @include typography($typography-h2);
+        font-size: 28px;
+      }
+
+      ::ng-deep .logo-text .logo-subtitle {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .form-inputs {
+    gap: $space-sm;
+  }
+
+  .input-group {
+    gap: $space-sm;
+
+    ::ng-deep .custom-input {
+      --min-height: 56px;
+      --padding-top: #{$space-md};
+      --padding-bottom: #{$space-md};
+    }
+  }
+
+  .form-actions {
+    margin-top: $space-md;
+
+    .submit-btn {
+      --min-height: 50px;
+      max-width: 300px;
+    }
+  }
+
+  .forgot-password {
+    margin-top: $space-md;
+
+    p {
+      font-size: 13px;
+    }
+
+    .forgot-link {
+      font-size: 13px;
+    }
+  }
+
+  .auth-form > div:last-child p {
+    font-size: 12px;
+  }
+
+  .footer {
+    padding: $space-lg 0 $space-md 0;
+
+    .footer-image {
+      width: 50px;
+      height: 50px;
+    }
+
+    a {
+      font-size: 12px;
+    }
+  }
+
+// ============================================================================
+// RESPONSIVE DESIGN - DESKTOP
+// ============================================================================
+
+@include respond-to('lg') {
+  .auth-container {
+    padding: $space-2xl $space-lg;
+  }
+
+  .auth-form {
+    padding: $space-3xl $space-2xl;
+    max-width: 500px;
+  }
+
+  .form-inputs {
+    gap: $space-md;
+  }
+
+  .input-group {
+    gap: $space-sm;
+
+    ::ng-deep .custom-input {
+      --min-height: 60px;
+      --padding-top: #{$space-md};
+      --padding-bottom: #{$space-md};
+    }
+  }
+
+  .form-actions {
+    margin-top: $space-md;
+
+    .submit-btn {
+      --min-height: 54px;
+      max-width: 320px;
+    }
+  }
+}
 }

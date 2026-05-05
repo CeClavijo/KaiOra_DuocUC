@@ -37,12 +37,26 @@
     }
   }
 
-  // Ícono del input
-  .input-icon {
+  // Ícones del input (sobre, candado, ojo)
+  .input-icon,
+  .eye-icon {
     font-size: 20px;
-    color: $color-tertiary;
-    margin-right: $space-sm;
+    color: $color-tertiary !important;
     flex-shrink: 0;
+    transition: color $transition-base;
+  }
+
+  .eye-icon {
+    cursor: pointer;
+    padding: $space-xs;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &:active {
+      color: $color-primary-dark;
+    }
   }
 
   // Campo input
@@ -61,32 +75,6 @@
       @include typography($typography-label);
       color: $color-text-secondary;
       margin-bottom: $space-xs;
-    }
-  }
-
-  // Botón toggle contraseña
-  .password-toggle {
-    --padding-start: #{$space-sm};
-    --padding-end: #{$space-sm};
-    --min-height: 32px;
-    --min-width: 32px;
-
-    ion-icon.eye-icon {
-      font-size: 20px;
-      color: $color-text-secondary;
-      transition: color $transition-base;
-    }
-
-    &:hover {
-      ion-icon.eye-icon {
-        color: $color-primary;
-      }
-    }
-
-    &.ion-activated {
-      ion-icon.eye-icon {
-        color: $color-primary;
-      }
     }
   }
 }
