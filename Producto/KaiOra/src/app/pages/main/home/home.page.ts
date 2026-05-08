@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { Recipe } from 'src/app/models/recipe.model';
+import { UtilsService } from 'src/app/services/utils';
+import { AddUpdateRecipeComponent } from 'src/app/shared/components/add-update-recipe/add-update-recipe.component';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  utilsSvc = inject(UtilsService);
 
   ngOnInit() {
   }
@@ -16,6 +19,14 @@ export class HomePage implements OnInit {
   //funcion vacia / necesaria para evitar problemas de compilacion
   click() {
     console.log("ok")
+  }
+
+  async addUpdateRecipe(recipe?: Recipe) {
+    let success = await this.utilsSvc.presentModal({
+      component: AddUpdateRecipeComponent,
+      cssClass: 'add-update-modal',
+      componentProps: { recipe }
+    })
   }
 
 }
