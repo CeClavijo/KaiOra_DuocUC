@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FirebaseService } from 'src/app/services/firebase.sevice';
+import { inject } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-auth',
@@ -14,13 +17,21 @@ export class AuthPage implements OnInit {
     password: new FormControl('', [Validators.required])
   })
 
-  constructor() { }
+  firebaseSvc = inject(FirebaseService);
 
   ngOnInit() {
   }
 
+
   submit() {
-    console.log(this.form.value);
+  console.log("Valores que se envían:", this.form.value); // <--- MIRA ESTO EN LA CONSOLA
+  if (this.form.valid) {
+    this.firebaseSvc.signIn(this.form.value as User).then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.error("Error detallado:", err.code);
+    })
   }
+}
 
 }
