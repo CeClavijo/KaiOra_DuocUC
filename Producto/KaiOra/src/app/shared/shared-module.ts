@@ -5,7 +5,7 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
 import { LogoComponent } from './components/logo/logo.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddUpdateRecipeComponent } from './components/add-update-recipe/add-update-recipe.component';
+import { AddUpdateRecipeComponent } from './components/modals/add-update-recipe/add-update-recipe.component';
 import { CreateCourseModalComponent } from './components/modals/create-course-modal/create-course-modal.component';
 import { SidebarNavComponent } from './components/sidebar-nav/sidebar-nav.component';
 import { BottomTabsComponent } from './components/bottom-tabs/bottom-tabs.component';
@@ -17,7 +17,7 @@ import { BottomTabsComponent } from './components/bottom-tabs/bottom-tabs.compon
     HeaderComponent,
     CustomInputComponent,
     LogoComponent,
-    AddUpdateRecipeComponent
+    AddUpdateRecipeComponent,
     CreateCourseModalComponent,
     SidebarNavComponent,
     BottomTabsComponent
@@ -27,7 +27,7 @@ import { BottomTabsComponent } from './components/bottom-tabs/bottom-tabs.compon
     CustomInputComponent,
     ReactiveFormsModule,
     LogoComponent,
-    AddUpdateRecipeComponent
+    AddUpdateRecipeComponent,
     CreateCourseModalComponent,
     SidebarNavComponent,
     BottomTabsComponent

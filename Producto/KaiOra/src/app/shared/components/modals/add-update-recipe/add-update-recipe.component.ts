@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Recipe } from 'src/app/models/recipe.model';
-import { UtilsService } from 'src/app/services/utils';
+import { Utils } from 'src/app/services/utils';
 
 @Component({
   selector: 'app-add-update-recipe',

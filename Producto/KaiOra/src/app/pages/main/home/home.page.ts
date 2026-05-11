@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe.model';
-import { UtilsService } from 'src/app/services/utils';
-import { AddUpdateRecipeComponent } from 'src/app/shared/components/add-update-recipe/add-update-recipe.component';
+import { Utils } from 'src/app/services/utils';
+import { AddUpdateRecipeComponent } from 'src/app/shared/components/modals/add-update-recipe/add-update-recipe.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ import { AddUpdateRecipeComponent } from 'src/app/shared/components/add-update-r
 })
 export class HomePage implements OnInit {
 
-  utilsSvc = inject(UtilsService);
+  utilsSvc = inject(Utils);
 
   ngOnInit() {
   }

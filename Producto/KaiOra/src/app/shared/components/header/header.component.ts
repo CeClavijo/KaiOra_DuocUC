@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { UtilsService } from 'src/app/services/utils';
+import { Utils } from 'src/app/services/utils';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +12,7 @@ export class HeaderComponent  implements OnInit {
   @Input() title!: string;
   @Input() isModal!: boolean;
 
-  utilsSvc = inject(UtilsService)
+  utilsSvc = inject(Utils)
 
   ngOnInit() {}
 
