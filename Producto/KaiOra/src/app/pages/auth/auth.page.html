@@ -1,7 +1,7 @@
 <ion-content class="auth-content">
   <div class="auth-container">
     <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
-      
+
       <!-- Logo y Encabezado -->
       <div class="form-header">
         <app-logo></app-logo>
@@ -11,7 +11,7 @@
       <div class="form-inputs">
         <!-- Email Input -->
         <div class="input-group">
-          <app-custom-input 
+          <app-custom-input
             icon="mail-outline"
             autocomplete="email"
             [control]="form.controls.email"
@@ -27,7 +27,7 @@
 
         <!-- Password Input -->
         <div class="input-group">
-          <app-custom-input 
+          <app-custom-input
             icon="lock-closed-outline"
             [control]="form.controls.password"
             type="password"
@@ -42,17 +42,18 @@
 
       <!-- Submit Button -->
       <div class="form-actions">
-        <ion-button 
-          expand="block" 
-          mode="ios" 
-          class="submit-btn" 
-          type="submit" 
+        <ion-button
+          expand="block"
+          mode="ios"
+          class="submit-btn"
+          type="submit"
           [disabled]="form.invalid"
         >
           Iniciar Sesión
         </ion-button>
-      </div>
+</div>
 
+<!-- ... resto del código ... -->
       <!-- Forgot Password Link -->
       <div class="forgot-password">
         <p>
@@ -83,5 +84,5 @@
       </div>
     </div>
   </div>
-  
+
 </ion-content>

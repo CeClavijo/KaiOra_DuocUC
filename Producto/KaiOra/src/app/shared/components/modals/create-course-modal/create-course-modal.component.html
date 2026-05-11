@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Curso</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="modal-content">
+    <form>
+      <!-- Selector de Profesor -->
+      <div class="form-group">
+        <ion-label>Profesor</ion-label>
+        <div class="select-teacher">
+          <ion-select placeholder="Elegir Profesor">
+            <!-- Opciones aquí después -->
+          </ion-select>
+          <ion-button fill="clear" class="btn-add-teacher">
+            <ion-icon name="add-circle"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+
+      <!-- Lista de Alumnos -->
+      <div class="form-group">
+        <ion-label>Alumnos</ion-label>
+        <p class="placeholder-text">Aquí irá la lista de alumnos</p>
+      </div>
+
+      <!-- Botón Guardar -->
+      <ion-button class="submit" expand="block">
+        Crear Curso
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

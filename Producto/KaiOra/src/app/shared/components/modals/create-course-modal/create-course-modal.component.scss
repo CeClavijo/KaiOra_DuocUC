@@ -1,0 +1,81 @@
+@import 'src/theme/variables.scss';
+
+.modal-content {
+  padding: $space-md;
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+
+  ion-label {
+    @include typography($typography-label);
+    color: $color-text-secondary;
+    font-weight: $font-weight-semibold;
+  }
+
+  .placeholder-text {
+    @include typography($typography-body-sm);
+    color: $color-text-light;
+    padding: $space-md;
+    background-color: $color-bg-secondary;
+    border-radius: $border-radius-md;
+    text-align: center;
+  }
+}
+
+.select-teacher {
+  display: flex;
+  gap: $space-sm;
+  align-items: center;
+
+  ion-select {
+    flex: 1;
+    --padding-start: #{$space-md};
+    --padding-end: #{$space-md};
+    border: $border-width-thin solid $color-neutral-light;
+    border-radius: $border-radius-md;
+    height: 44px;
+  }
+
+  .btn-add-teacher {
+    --color: #{$color-primary};
+    font-size: 28px;
+    height: 44px;
+    width: 44px;
+    margin: 0;
+    padding: 0;
+
+    &:hover {
+      --color: #{$color-primary-dark};
+    }
+  }
+}
+
+// Responsive Desktop
+@include respond-to('md') {
+  .modal-content {
+    padding: $space-lg;
+    max-width: 600px;
+  }
+
+  .select-teacher {
+    ion-select {
+      font-size: $font-size-base;
+    }
+
+    .btn-add-teacher {
+      font-size: 32px;
+    }
+  }
+}

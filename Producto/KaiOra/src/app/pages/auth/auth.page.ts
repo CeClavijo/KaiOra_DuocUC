@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FirebaseService } from 'src/app/services/firebase.sevice';
-import { inject } from '@angular/core';
-import { User } from 'src/app/models/user.model';
+import { Router } from '@angular/router';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { Utils } from 'src/app/services/utils';
 
 @Component({
   selector: 'app-auth',
@@ -18,20 +18,35 @@ export class AuthPage implements OnInit {
   })
 
   firebaseSvc = inject(FirebaseService);
+  utilsSvc = inject(Utils);
+  router = inject(Router);
 
   ngOnInit() {
   }
 
+  async submit() {
+    if (this.form.valid) {
+      const loading = await this.utilsSvc.loading();
+      await loading.present();
 
-  submit() {
-  console.log("Valores que se envían:", this.form.value); // <--- MIRA ESTO EN LA CONSOLA
-  if (this.form.valid) {
-    this.firebaseSvc.signIn(this.form.value as User).then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.error("Error detallado:", err.code);
-    })
+      try {
+        const email = this.form.get('email')?.value as string;
+        const password = this.form.get('password')?.value as string;
+
+        await this.firebaseSvc.signIn(email, password);
+        this.router.navigate(['/admin']);
+      } catch (error) {
+        console.log(error);
+        this.utilsSvc.presentToast({
+          message: 'Error al iniciar sesión',
+          duration: 2500,
+          position: 'top',
+          color: 'danger',
+          icon: 'alert-circle-outline'
+        })
+      } finally {
+        loading.dismiss();
+      }
+    }
   }
-}
-
 }
