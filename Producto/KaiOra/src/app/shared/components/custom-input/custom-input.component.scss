@@ -1,0 +1,92 @@
+// ============================================================================
+// CUSTOM INPUT COMPONENT STYLES - KAIORA
+// ============================================================================
+
+@import '../../../../theme/variables.scss';
+
+.custom-input {
+  --border-color: #{$color-neutral-light};
+  --border-radius: #{$border-radius-xl};
+  --border-style: solid;
+  --border-width: 1px;
+  --padding-start: #{$space-md};
+  --padding-end: #{$space-md};
+  --padding-top: #{$space-md};
+  --padding-bottom: #{$space-md};
+  --background: #{$color-bg-secondary};
+  --min-height: 56px;
+
+  margin: $space-md 0;
+  border-radius: $border-radius-xl;
+  border: $border-width-thin solid $color-neutral-light;
+  transition: all $transition-base;
+
+  // Estado focus
+  &:focus-within {
+    --border-color: #{$color-primary};
+    --background: #{$color-bg-primary};
+    box-shadow: 0 0 0 2px rgba($color-primary, 0.1);
+  }
+
+  // Estado invalid
+  &.item-has-error {
+    --border-color: #{$color-danger};
+
+    &:focus-within {
+      box-shadow: 0 0 0 2px rgba($color-danger, 0.1);
+    }
+  }
+
+  // Ícones del input (sobre, candado, ojo)
+  .input-icon,
+  .eye-icon {
+    font-size: 20px;
+    color: $color-tertiary !important;
+    flex-shrink: 0;
+    transition: color $transition-base;
+  }
+
+  .eye-icon {
+    cursor: pointer;
+    padding: $space-xs;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &:active {
+      color: $color-primary-dark;
+    }
+  }
+
+  // Campo input
+  .input-field {
+    @include typography($typography-input);
+    color: $color-text-primary;
+
+    ion-input {
+      &::placeholder {
+        color: $color-text-light;
+      }
+    }
+
+    // Label flotante
+    ion-label {
+      @include typography($typography-label);
+      color: $color-text-secondary;
+      margin-bottom: $space-xs;
+    }
+  }
+}
+
+// ============================================================================
+// RESPONSIVO
+// ============================================================================
+
+@include respond-to('md') {
+  .custom-input {
+    --padding-start: #{$space-lg};
+    --padding-end: #{$space-lg};
+    --min-height: 60px;
+  }
+}

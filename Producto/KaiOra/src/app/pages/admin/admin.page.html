@@ -1,0 +1,12 @@
+<div class="admin-container">
+  <!-- SIDEBAR (Desktop) -->
+  <app-sidebar-nav *ngIf="!isMobile" class="sidebar"></app-sidebar-nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!-- BOTTOM TABS (Mobile) -->
+  <app-bottom-tabs *ngIf="isMobile" class="bottom-tabs"></app-bottom-tabs>
+</div>

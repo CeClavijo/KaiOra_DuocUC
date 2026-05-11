@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SignUpPageRoutingModule } from './sign-up-routing.module';
+import { AdminPageRoutingModule } from './admin-routing.module';
 
-import { SignUpPage } from './sign-up.page';
+import { AdminPage } from './admin.page';
 import { SharedModule } from 'src/app/shared/shared-module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { SharedModule } from 'src/app/shared/shared-module';
     CommonModule,
     FormsModule,
     IonicModule,
-    SignUpPageRoutingModule,
+    AdminPageRoutingModule,
     SharedModule
   ],
-  declarations: [SignUpPage]
+  declarations: [AdminPage]
 })
-export class SignUpPageModule {}
+export class AdminPageModule {}

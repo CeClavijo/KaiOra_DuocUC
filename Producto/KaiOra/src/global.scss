@@ -1,13 +1,16 @@
 /*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
+ * App Global CSS - KAIORA
+ * ============================================================================
+ * Sistema de estilos globales con variables de diseño
+ * Para más información: https://ionicframework.com/docs/layout/global-stylesheets
  */
+
+// ============================================================================
+// 1. IMPORTACIONES
+// ============================================================================
+
+// Variables de diseño (Tipografía, Colores, Espaciado)
+@import './theme/variables.scss';
 
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
@@ -25,107 +28,460 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+// ============================================================================
+// 2. ESTILOS GLOBALES BASE
+// ============================================================================
+
+// Estilos por defecto del body
+* {
+  font-family: $font-family-primary;
+}
+
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+  background-color: $color-bg-primary;
+}
+
+// Estilos para títulos
+h1 {
+  @include typography($typography-h1);
+  color: $color-text-primary;
+  margin: $space-lg 0 $space-md 0;
+}
+
+h2 {
+  @include typography($typography-h2);
+  color: $color-text-primary;
+  margin: $space-lg 0 $space-md 0;
+}
+
+h3 {
+  @include typography($typography-h3);
+  color: $color-text-primary;
+  margin: $space-md 0 $space-sm 0;
+}
+
+h4 {
+  @include typography($typography-h4);
+  color: $color-text-primary;
+  margin: $space-md 0 $space-sm 0;
+}
+
+h5, h6 {
+  @include typography($typography-h4);
+  color: $color-text-primary;
+  margin: $space-sm 0 $space-xs 0;
+}
+
+// Estilos para párrafos
+p {
+  @include typography($typography-body);
+  color: $color-text-primary;
+  margin: 0 0 $space-md 0;
+}
+
+// Estilos para enlaces
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-primary-dark;
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: $color-primary-dark;
+  }
+}
+
+// ============================================================================
+// 3. COMPONENTES IONIC PERSONALIZADOS
+// ============================================================================
+
 ion-button {
-    text-transform: none;
+  text-transform: none;
+  @include typography($typography-button);
+  border-radius: $border-radius-xl;
+  --border-radius: #{$border-radius-xl};
+  transition: all $transition-base;
+
+  &.ion-activated {
+    transform: scale(0.98);
+  }
 }
 
-// safe padding for ios
-.safe-p-bottom{
-    padding-bottom: constant(safe-area-inset-bottom); // for ios 13+
-    padding-bottom: env(safe-area-inset-bottom); // for previous ios versions
+ion-input {
+  @include typography($typography-input);
 }
 
-.submit {
-    margin-top: 40px;
+ion-textarea {
+  @include typography($typography-body-sm);
 }
 
-.empty {
-    text-align: center;
-    padding: 60px;
-    opacity: 30%;
+ion-label {
+  @include typography($typography-label);
+  color: $color-text-secondary;
+}
 
-    ion-icon {
-        font-size: 100px;
-    }
+ion-card {
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  background-color: $color-bg-primary;
+}
+
+ion-item {
+  --padding-start: #{$space-md};
+  --padding-end: #{$space-md};
+  --padding-top: #{$space-sm};
+  --padding-bottom: #{$space-sm};
+  --background: #{$color-bg-primary};
+  --border-color: #{$color-neutral-light};
+}
+
+ion-chip {
+  border-radius: $border-radius-xl;
+  --background: #{$color-primary-lighter};
+  --color: #{$color-primary};
+  @include typography($typography-label-xs);
+}
+
+// ============================================================================
+// 4. CLASES UTILITARIAS GLOBALES
+// ============================================================================
+
+// Padding y Margin Safe Area (iOS)
+.safe-p-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-p-top {
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
+
+// Flexbox
+.d-flex {
+  display: flex;
 }
 
 .d-flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  @include flex-center;
 }
 
-
-.custom-input {
-    --border-color: #e0e0e0;
-    --border-radius: 15px;
-    --border-style: solid;
-    --border-width: 1px;
-    margin: 20px 0;
-
-    ion-label {
-        position: relative;
-        bottom: 2px;
-    }
-
-    .eye-icon {
-        position: relative;
-        top: 13px;
-    }
+.flex-col {
+  flex-direction: column;
 }
 
-.validators {
-    color: var(--ion-color-danger);
-    font-size: 13px;
-    text-align: center;
+.flex-row {
+  flex-direction: row;
 }
 
+.justify-center {
+  justify-content: center;
+}
 
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.gap-xs { gap: $space-xs; }
+.gap-sm { gap: $space-sm; }
+.gap-md { gap: $space-md; }
+.gap-lg { gap: $space-lg; }
+.gap-xl { gap: $space-xl; }
+
+// Padding
+.p-xs { padding: $space-xs; }
+.p-sm { padding: $space-sm; }
+.p-md { padding: $space-md; }
+.p-lg { padding: $space-lg; }
+.p-xl { padding: $space-xl; }
+
+.px-sm { padding-left: $space-sm; padding-right: $space-sm; }
+.px-md { padding-left: $space-md; padding-right: $space-md; }
+.px-lg { padding-left: $space-lg; padding-right: $space-lg; }
+
+.py-sm { padding-top: $space-sm; padding-bottom: $space-sm; }
+.py-md { padding-top: $space-md; padding-bottom: $space-md; }
+.py-lg { padding-top: $space-lg; padding-bottom: $space-lg; }
+
+// Margin
+.m-xs { margin: $space-xs; }
+.m-sm { margin: $space-sm; }
+.m-md { margin: $space-md; }
+.m-lg { margin: $space-lg; }
+.m-xl { margin: $space-xl; }
+
+.mx-auto { margin-left: auto; margin-right: auto; }
+.my-auto { margin-top: auto; margin-bottom: auto; }
+
+// Text Align
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+// Text Colors
+.text-primary { color: $color-primary; }
+.text-secondary { color: $color-secondary; }
+.text-tertiary { color: $color-tertiary; }
+.text-success { color: $color-success; }
+.text-danger { color: $color-danger; }
+.text-warning { color: $color-warning; }
+.text-info { color: $color-info; }
+
+// Text Styles
+.text-muted { color: $color-text-light; }
+.text-disabled { color: $color-text-disabled; }
+.font-bold { font-weight: $font-weight-bold; }
+.font-semibold { font-weight: $font-weight-semibold; }
+.font-medium { font-weight: $font-weight-medium; }
+.font-light { font-weight: $font-weight-light; }
+
+// Background Colors
+.bg-primary { background-color: $color-primary; }
+.bg-secondary { background-color: $color-secondary; }
+.bg-tertiary { background-color: $color-tertiary; }
+.bg-danger { background-color: $color-danger; }
+.bg-success { background-color: $color-success; }
+.bg-warning { background-color: $color-warning; }
+.bg-info { background-color: $color-info; }
+
+// Border Radius
+.rounded-sm { border-radius: $border-radius-sm; }
+.rounded-md { border-radius: $border-radius-md; }
+.rounded-lg { border-radius: $border-radius-lg; }
+.rounded-xl { border-radius: $border-radius-xl; }
+.rounded-2xl { border-radius: $border-radius-2xl; }
+.rounded-full { border-radius: $border-radius-full; }
+
+// Sombras
+.shadow-xs { box-shadow: $shadow-xs; }
+.shadow-sm { box-shadow: $shadow-sm; }
+.shadow-md { box-shadow: $shadow-md; }
+.shadow-lg { box-shadow: $shadow-lg; }
+.shadow-xl { box-shadow: $shadow-xl; }
+
+// ============================================================================
+// 5. COMPONENTES ESPECÍFICOS
+// ============================================================================
+
+// Formulario de autenticación
 .auth-form {
-    width: 100%;
-    text-align: center;
-    padding: 20px;
+  width: 100%;
+  text-align: center;
+  padding: $space-md;
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+
+  @include respond-to('md') {
+    width: 500px;
+    margin: 0 auto;
+  }
 }
 
+// Input personalizado
+.custom-input {
+  --border-color: #{$color-neutral-light};
+  --border-radius: #{$border-radius-xl};
+  --border-style: solid;
+  --border-width: 1px;
+  --padding-start: #{$space-md};
+  --padding-end: #{$space-md};
+  margin: $space-md 0;
+  transition: all $transition-base;
+
+  ion-label {
+    position: relative;
+    bottom: 2px;
+    @include typography($typography-label);
+    color: $color-text-secondary;
+  }
+
+  &:focus-within {
+    --border-color: #{$color-primary};
+  }
+
+  .eye-icon {
+    position: relative;
+    top: 13px;
+    color: $color-text-secondary;
+    cursor: pointer;
+    transition: color $transition-base;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+// Validadores
+.validators {
+  color: $color-danger;
+  @include typography($typography-label-xs);
+  text-align: center;
+  margin-top: $space-xs;
+}
+
+// Estado vacío
+.empty {
+  text-align: center;
+  padding: $space-3xl;
+  opacity: 30%;
+
+  ion-icon {
+    font-size: 100px;
+    color: $color-text-secondary;
+    margin-bottom: $space-lg;
+  }
+
+  p {
+    @include typography($typography-body-sm);
+    color: $color-text-secondary;
+  }
+}
+
+// Elemento de producto
 .product-item {
-    --padding-top: 20px;
+  --padding-top: #{$space-lg};
+  --padding-bottom: #{$space-lg};
+  --padding-start: #{$space-md};
+  --padding-end: #{$space-md};
 
-    ion-avatar {
-        width: 70px;
-        height: 80px;
-        --border-radius: 15px;
+  ion-avatar {
+    width: 70px;
+    height: 80px;
+    --border-radius: #{$border-radius-lg};
+    flex-shrink: 0;
+  }
+
+  .name {
+    @include typography($typography-body);
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    padding-bottom: $space-xs;
+  }
+
+  .data {
+    @include typography($typography-body-sm);
+    color: $color-text-secondary;
+
+    strong {
+      font-weight: $font-weight-medium;
+      color: $color-text-primary;
     }
+  }
 
-    .name {
-        font-weight: 600;
-        padding-bottom: 5px;
+  .option-btn {
+    font-size: 27px;
+    color: $color-text-secondary;
+    cursor: pointer;
+    transition: color $transition-base;
+
+    &:hover {
+      color: $color-primary;
     }
+  }
 
-    .data {
-        font-size: 13px;
-
-        strong {
-            font-weight: 500;
-        }
-    }
-
-    .option-btn {
-        font-size: 27px;
-    }
-
-    ion-chip {
-        font-size: 14px;
-        border-radius: 10px;
-        margin-left: 0;
-    }
+  ion-chip {
+    @include typography($typography-label-xs);
+    border-radius: $border-radius-lg;
+    margin-left: 0;
+  }
 }
 
-@media (min-width: 769px) {
-    .auth-form {
-        width: 500px;
-    }
+// Botón de envío
+.submit {
+  margin-top: $space-2xl;
+  width: 100%;
+  height: 50px;
+  border-radius: $border-radius-xl;
+  @include typography($typography-button);
+  background: $color-primary !important;
+  color: white !important;
+  transition: all $transition-base;
 
-    .add-update-modal {
-        --height: 680px;
-    }
+  &:hover:not([disabled]) {
+    background: $color-primary-dark !important;
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  &[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }
+
+// ============================================================================
+// 6. RESPONSIVE DESIGN
+// ============================================================================
+
+@include respond-to('md') {
+  .add-update-modal {
+    --height: 680px;
+  }
+}
+
+// ============================================================================
+// 7. ANIMACIONES GLOBALES
+// ============================================================================
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Aplicar animación de entrada
+.animate-fade-in {
+  animation: fadeIn $transition-base;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp $transition-base;
+}
+
+.animate-slide-in-down {
+  animation: slideInDown $transition-base;
+}
+
+// ============================================================================
+// FIN DE ESTILOS GLOBALES
+// ============================================================================
