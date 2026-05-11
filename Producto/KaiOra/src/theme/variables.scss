@@ -1,2 +1,289 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+// ============================================================================
+// VARIABLES GLOBALES - KAIORA
+// ============================================================================
+// Sistema de diseño completo: Tipografía, Colores y Espaciado
+// ============================================================================
+
+// ============================================================================
+// 1. TIPOGRAFÍA - BE VIETNAM PRO (Google Fonts)
+// ============================================================================
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap');
+
+// Variables de familia de fuentes
+$font-family-primary: 'Be Vietnam Pro', sans-serif;
+
+// Variables de tamaños de fuente
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 24px;
+$font-size-3xl: 32px;
+$font-size-4xl: 40px;
+
+// Variables de pesos de fuente
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Variables de altura de línea
+$line-height-tight: 1.2;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+$line-height-loose: 2;
+
+// Variables de espaciado entre letras
+$letter-spacing-tight: -0.5px;
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 0.5px;
+
+// ============================================================================
+// 2. ESTILOS DE TIPOGRAFÍA PREDEFINIDOS
+// ============================================================================
+
+// Encabezados
+$typography-h1: (
+  'font-size': $font-size-4xl,
+  'font-weight': $font-weight-bold,
+  'line-height': $line-height-tight,
+  'letter-spacing': $letter-spacing-tight
+);
+
+$typography-h2: (
+  'font-size': $font-size-3xl,
+  'font-weight': $font-weight-bold,
+  'line-height': $line-height-tight,
+  'letter-spacing': $letter-spacing-tight
+);
+
+$typography-h3: (
+  'font-size': $font-size-2xl,
+  'font-weight': $font-weight-semibold,
+  'line-height': $line-height-tight,
+  'letter-spacing': $letter-spacing-normal
+);
+
+$typography-h4: (
+  'font-size': $font-size-xl,
+  'font-weight': $font-weight-semibold,
+  'line-height': $line-height-normal,
+  'letter-spacing': $letter-spacing-normal
+);
+
+// Cuerpo de texto
+$typography-body-lg: (
+  'font-size': $font-size-lg,
+  'font-weight': $font-weight-regular,
+  'line-height': $line-height-relaxed,
+  'letter-spacing': $letter-spacing-normal
+);
+
+$typography-body: (
+  'font-size': $font-size-base,
+  'font-weight': $font-weight-regular,
+  'line-height': $line-height-normal,
+  'letter-spacing': $letter-spacing-normal
+);
+
+$typography-body-sm: (
+  'font-size': $font-size-sm,
+  'font-weight': $font-weight-regular,
+  'line-height': $line-height-normal,
+  'letter-spacing': $letter-spacing-normal
+);
+
+// Etiquetas y pequeños textos
+$typography-label: (
+  'font-size': $font-size-sm,
+  'font-weight': $font-weight-medium,
+  'line-height': $line-height-normal,
+  'letter-spacing': $letter-spacing-wide
+);
+
+$typography-label-xs: (
+  'font-size': $font-size-xs,
+  'font-weight': $font-weight-medium,
+  'line-height': $line-height-tight,
+  'letter-spacing': $letter-spacing-wide
+);
+
+// Botones
+$typography-button: (
+  'font-size': $font-size-base,
+  'font-weight': $font-weight-semibold,
+  'line-height': $line-height-normal,
+  'letter-spacing': $letter-spacing-normal
+);
+
+// Inputs
+$typography-input: (
+  'font-size': $font-size-base,
+  'font-weight': $font-weight-regular,
+  'line-height': $line-height-normal,
+  'letter-spacing': $letter-spacing-normal
+);
+
+// ============================================================================
+// 3. COLORES - PALETA PRINCIPAL
+// ============================================================================
+
+// Colores Primarios
+$color-primary: #E56A4A;
+$color-primary-light: #f08c73;
+$color-primary-dark: #c94c30;
+$color-primary-lighter: #f5b5a3;
+
+// Colores Secundarios
+$color-secondary: #368947;
+$color-secondary-light: #5ba36a;
+$color-secondary-dark: #2a6b38;
+$color-secondary-lighter: #7abe89;
+
+// Colores Terciarios
+$color-tertiary: #D9A035;
+$color-tertiary-light: #e5b866;
+$color-tertiary-dark: #b88220;
+$color-tertiary-lighter: #edd9a8;
+
+// Colores Neutral
+$color-neutral-dark: #2A2E2C;
+$color-neutral-medium: #666666;
+$color-neutral-light: #e0e0e0;
+$color-neutral-lighter: #f5f5f5;
+
+// Colores de Estado
+$color-danger: #DC3545;
+$color-warning: #FFC107;
+$color-success: #28A745;
+$color-info: #17A2B8;
+
+// Colores de Texto
+$color-text-primary: $color-neutral-dark;
+$color-text-secondary: $color-neutral-medium;
+$color-text-light: #999999;
+$color-text-disabled: #CCCCCC;
+
+// Colores de Fondo
+$color-bg-primary: #FFFFFF;
+$color-bg-secondary: $color-neutral-lighter;
+$color-bg-dark: #F0F0F0;
+
+// ============================================================================
+// 4. ESPACIADO
+// ============================================================================
+
+$space-2xs: 4px;
+$space-xs: 8px;
+$space-sm: 12px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 32px;
+$space-2xl: 48px;
+$space-3xl: 64px;
+
+// ============================================================================
+// 5. BORDES Y RADIOS
+// ============================================================================
+
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 15px;
+$border-radius-2xl: 20px;
+$border-radius-full: 9999px;
+
+$border-width-thin: 1px;
+$border-width-medium: 2px;
+$border-width-thick: 3px;
+
+// ============================================================================
+// 6. SOMBRAS
+// ============================================================================
+
+$shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+
+// ============================================================================
+// 7. TRANSICIONES
+// ============================================================================
+
+$transition-fast: 150ms ease-in-out;
+$transition-base: 250ms ease-in-out;
+$transition-slow: 350ms ease-in-out;
+
+// ============================================================================
+// 8. BREAKPOINTS (Responsive)
+// ============================================================================
+
+$breakpoint-xs: 320px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-2xl: 1400px;
+
+// ============================================================================
+// 9. MIXINS ÚTILES
+// ============================================================================
+
+// Mixin para aplicar estilos de tipografía
+@mixin typography($typography-map) {
+  font-size: map-get($typography-map, 'font-size');
+  font-weight: map-get($typography-map, 'font-weight');
+  line-height: map-get($typography-map, 'line-height');
+  letter-spacing: map-get($typography-map, 'letter-spacing');
+}
+
+// Mixin para flexbox centrado
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Mixin para truncar texto
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Mixin para múltiples líneas truncadas
+@mixin line-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Mixin para responsive
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}
+
+// ============================================================================
+// FIN DE VARIABLES
+// ============================================================================

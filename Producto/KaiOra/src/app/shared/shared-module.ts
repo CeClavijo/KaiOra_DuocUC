@@ -5,6 +5,9 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
 import { LogoComponent } from './components/logo/logo.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateCourseModalComponent } from './components/modals/create-course-modal/create-course-modal.component';
+import { SidebarNavComponent } from './components/sidebar-nav/sidebar-nav.component';
+import { BottomTabsComponent } from './components/bottom-tabs/bottom-tabs.component';
 
 
 
@@ -12,13 +15,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     HeaderComponent,
     CustomInputComponent,
-    LogoComponent
+    LogoComponent,
+    CreateCourseModalComponent,
+    SidebarNavComponent,
+    BottomTabsComponent
   ],
   exports: [
     HeaderComponent,
     CustomInputComponent,
     ReactiveFormsModule,
-    LogoComponent
+    LogoComponent,
+    CreateCourseModalComponent,
+    SidebarNavComponent,
+    BottomTabsComponent
   ],
   imports: [
     CommonModule,
