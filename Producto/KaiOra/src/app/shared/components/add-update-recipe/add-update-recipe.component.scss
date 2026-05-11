@@ -1,0 +1,344 @@
+// Para el header antes del formulario
+
+.modal-header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  background: white;
+  padding-top: 24px;
+  padding-bottom: 0;
+
+  .modal-title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a472a;
+    letter-spacing: -0.5px;
+  }
+
+  .modal-description {
+    margin: 8px 0 16px 0;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+    max-width: 100%;
+  }
+
+  .header-actions-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .btn-discard {
+    --color: #1a472a;
+    --border-color: #C1C9BE;
+    --border-radius: 12px;
+    font-weight: 600;
+    text-transform: none;
+    height: 44px;
+    text-transform: none;
+    margin: 0;
+  }
+
+  .btn-create {
+    --background: #1a472a;
+    --border-radius: 12px;
+    --box-shadow: none;
+    height: 44px;
+    font-weight: 600;
+    text-transform: none;
+    margin: 0;
+  }
+
+  .header-divider {
+    height: 1px;
+    width: 100%;
+    background-color: #f2f2f2;
+  }
+}
+
+// para todas las demas opciones del formulario
+
+.custom-form-card {
+  margin: 0;
+  border-radius: 16px;
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.field-container {
+  text-align: left;
+  margin-bottom: 20px;
+
+  .custom-label {
+    display: block;
+    color: #1a472a;
+    font-weight: 700;
+    margin-bottom: 8px;
+    margin-left: 4px;
+  }
+}
+
+.custom-input-item {
+  --background: #ffffff;
+  --border-radius: 10px;
+  --border-color: #e0e0e0;
+  --padding-start: 12px;
+  margin-top: 4px;
+}
+
+.input-suffix {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.category-select {
+  --placeholder-color: #999;
+  --placeholder-opacity: 1;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &::part(container) {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &::part(placeholder), 
+  &::part(text) {
+    text-align: left;
+    flex: 1;
+  }
+
+  &::part(icon) {
+    position: absolute;
+    right: 0;
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+    opacity: 0.8;
+  }
+}
+
+// Para el apartado de los ingredientes
+.ingredients-container {
+  background: #f1f1ee;
+  border-radius: 12px;
+  overflow: hidden;
+
+  .header-row {
+    padding: 10px 15px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .ingredient-row {
+    background: #ffffff;
+    margin: 0 8px 8px 8px;
+    border-radius: 8px;
+    padding: 5px;
+  }
+
+  .ing-input {
+    --padding-start: 10px;
+    font-size: 14px;
+  }
+
+  .ing-select {
+    font-size: 14px;
+    min-height: auto;
+  }
+
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn-delete {
+    height: 38px;
+    margin: 0;
+    --padding-start: 0;
+    --padding-end: 0;
+  }
+}
+
+.add-ingredient-btn {
+  --color: #1a472a;
+  font-weight: bold;
+  text-transform: none;
+  font-size: 14px;
+}
+
+// Para la parte de lo importante
+.pcc-card {
+  --background: #fdf7f2;
+  border: 1px solid #f5e1d5;
+  text-align: left;
+
+  .section-title {
+    color: #632010;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .section-description {
+    color: #8c4a38;
+    font-size: 13px;
+  }
+
+  .custom-label {
+    color: #632010;
+  }
+
+  .custom-input-item {
+    --border-color: #f5e1d5;
+    --background: #ffffff;
+  }
+
+  .status-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    ion-badge {
+      --background: #632010;
+      padding: 6px 12px;
+      font-weight: bold;
+    }
+
+    .helper-text {
+      color: #8c4a38;
+      font-style: italic;
+      font-size: 14px;
+    }
+  }
+}
+
+.header-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+
+  ion-icon {
+    font-size: 24px;
+    color: #632010;
+  }
+}
+
+// Para la seccion de los puntos claves
+.key-points-card {
+  --background: #fff9e6;
+  border: 1px solid #f2e1ac;
+  margin-top: 16px;
+
+  .header-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+
+    ion-icon {
+      font-size: 24px;
+      color: #8c6d1f;
+    }
+
+    .section-title {
+      color: #8c6d1f;
+      margin: 0;
+      font-weight: 700;
+    }
+  }
+
+  .bullet-input-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .custom-bullet {
+      width: 8px;
+      height: 8px;
+      background-color: #8c6d1f;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .key-point-input {
+      --padding-start: 0;
+      font-size: 14px;
+      color: #4a3c15;
+      --placeholder-color: #a69363;
+      --placeholder-opacity: 0.6;
+    }
+  }
+
+  .point-divider {
+    border: 0;
+    border-top: 1px solid #e6d5a1;
+    margin: 4px 0 4px 20px;
+  }
+
+  .add-point-btn {
+    --color: #8c6d1f;
+    font-weight: 600;
+    text-transform: none;
+    margin-top: 10px;
+  }
+}
+
+// Para el estado del formulario
+.status-card {
+  --background: #e5e7eb;
+
+  .status-header {
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #555;
+  }
+
+  .status-item {
+    margin-top: 15px;
+
+    .status-text {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #333;
+    }
+  }
+
+  .progress-basic {
+    --progress-background: #2d5a3f;
+    --buffer-background: #c8ced0;
+    --color: #2d5a3f;
+    height: 6px;
+    border-radius: 10px;
+  }
+
+  .progress-pcc {
+  --progress-background: #632010; 
+  --buffer-background: #c8ced0; 
+  color: #632010;
+  height: 6px;
+  border-radius: 10px;
+  }
+}

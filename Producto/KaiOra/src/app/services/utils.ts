@@ -33,4 +33,3 @@ export class Utils {
     return this.modalCtrl.dismiss(data);
   }
 }
-
