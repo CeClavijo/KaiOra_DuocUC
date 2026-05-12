@@ -5,6 +5,8 @@ export interface Ingredient {
     unit: string
 }
 
+export type TechSheetStatus = 'Activa' | 'Archivada' | 'Borrador';
+
 // Modelo principal del formulario de recetas
 export interface Recipe {
     id: string,
@@ -17,5 +19,12 @@ export interface Recipe {
     cookingTemp: string,
     maintenance: string,
     keyPoints: string[],
-    views?: number
+    views?: number,
+    profesorId: string,
+    profesorName: string,
+    cursos: string[],
+    status: TechSheetStatus,
+    createdAt: Date,
+    UpdatedAt: Date,
+    imageURL: string
 }

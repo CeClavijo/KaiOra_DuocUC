@@ -1,7 +1,8 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Recipe } from 'src/app/models/recipe.model';
-import { UtilsService } from 'src/app/services/utils';
+import { Utils } from 'src/app/services/utils';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-add-update-recipe',
@@ -10,6 +11,9 @@ import { UtilsService } from 'src/app/services/utils';
   standalone: false,
 })
 export class AddUpdateRecipeComponent implements OnInit {
+
+  @Input() techSheet: Recipe;
+
   categories = [
     { id: '1', name: 'Entrantes' },
     { id: '2', name: 'Platos Fuertes' },
@@ -31,6 +35,9 @@ export class AddUpdateRecipeComponent implements OnInit {
     maintenance: new FormControl('', [Validators.required, Validators.minLength(5)]),
     keyPoints: new FormArray([])
   });
+
+  firebaseSvc = inject(FirebaseService);
+  utilsSvc = inject(Utils);
 
   ngOnInit() {}
 
@@ -59,6 +66,18 @@ export class AddUpdateRecipeComponent implements OnInit {
     this.ingredients.removeAt(index);
   }
 
+  get keyPoints() {
+    return this.form.get('keyPoints') as FormArray;
+  }
+
+  addKeypoint() {
+    this.keyPoints.push(new FormControl('', [Validators.required]));
+  }
+
+  removeKeyPoint(index: number) {
+    this.keyPoints.removeAt(index);
+  }
+
   // Progress bars form
   get basicInfoProgress(): number {
     const controls = ['name', 'category'];
@@ -80,15 +99,47 @@ export class AddUpdateRecipeComponent implements OnInit {
     return completed / controlNames.length;
   }
 
-  get keyPoints() {
-    return this.form.get('keyPoints') as FormArray;
-  }
+  async createTechSheet() {
+    const loading = await this.utilsSvc.loading();
+    await loading.present();
 
-  addKeypoint() {
-    this.keyPoints.push(new FormControl('', [Validators.required]));
-  }
+    const path = 'technical-sheets';
 
-  removeKeyPoint(index: number) {
-    this.keyPoints.removeAt(index);
+    const formValues = this.form.value;
+
+    delete formValues.id;
+
+    const recipeData = {
+      ...formValues,
+      profesorId: '',
+      profesorName: 'Profesor Desconocido',
+      status: 'Activa',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      views: 0,
+      cursos: []
+    };
+
+    this.firebaseSvc.addDocument(path, recipeData).then(async res => {
+      this.utilsSvc.presentToast({
+        message: 'Ficha técnica creada exitosamente',
+        duration: 1500,
+        color: 'success',
+        icon: 'checkmark-circle-outline'
+      });
+
+      this.utilsSvc.dismissModal({ success: true });
+    }).catch(error => {
+      console.log('Error al crear la ficha:', error);
+
+      this.utilsSvc.presentToast({
+        message: 'Error de conexión. Intentalo de nuevo.',
+        duration: 2500,
+        color: 'danger',
+        icon: 'alert-circle-outline'
+      });
+    }).finally(() =>{
+      loading.dismiss();
+    })
   }
 }

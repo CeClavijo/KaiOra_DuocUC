@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { getFirestore, setDoc, doc, getDoc, addDoc, collection, collectionData, query, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -150,5 +151,32 @@ export class FirebaseService {
 
   deleteUser(uid: string) {
     return this.firestore.collection('users').doc(uid).delete();
+  }
+
+  // =================== Base de datos ===================
+  // ================== Fichas Tecnicas ==================
+  getCollectiondata(path: string, collectionQuery?: any) {
+    const ref = collection(getFirestore(), path);
+    return collectionData(query(ref, ...collectionQuery))
+  }
+
+  setDocument(path: string, data: any) {
+    return setDoc(doc(getFirestore(), path), data);
+  }
+
+  updateDocument(path: string, data: any) {
+    return updateDoc(doc(getFirestore(), path), data);
+  }
+
+  deleteDocument(path: string) {
+    return deleteDoc(doc(getFirestore(), path));
+  }
+
+  async getDocument(path: string) {
+    return (await getDoc(doc(getFirestore(), path))).data();
+  }
+
+  addDocument(path: string, data: any) {
+    return addDoc(collection(getFirestore(), path), data);
   }
 }

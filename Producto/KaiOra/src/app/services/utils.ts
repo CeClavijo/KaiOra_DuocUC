@@ -20,6 +20,7 @@ export class Utils {
     const toast = await this.toastCtrl.create(opts);
     await toast.present();
   }
+  
   async presentModal(opts: ModalOptions) {
     const modal = await this.modalCtrl.create(opts);
 
@@ -31,5 +32,14 @@ export class Utils {
 
   dismissModal(data?: any) {
     return this.modalCtrl.dismiss(data);
+  }
+
+  saveInLocalStorage(key: string, value: any) {
+    return localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  getFromLocalStorage(key: string) {
+    const result = localStorage.getItem(key);
+    return result ? JSON.parse(result) : null;
   }
 }

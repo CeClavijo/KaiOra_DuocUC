@@ -10,7 +10,7 @@
         <p class="modal-description">Configura los parámetros técnicos y de seguridad alimentaria para tu creación culinaria.</p>
         <div class="header-actions-row">
           <ion-button fill="outline" class="btn-discard">Descartar</ion-button>
-          <ion-button mode="ios" class="btn-create">
+          <ion-button mode="ios" class="btn-create" (click)="createTechSheet()">
             <ion-icon slot="start" name="save-outline"></ion-icon>
             Guardar Ficha
           </ion-button>
@@ -210,11 +210,3 @@
     </ion-card>
   </form>
 </ion-content>
-
-<!-- 
-form = new FormGroup({
-    performance: new FormControl(null, [Validators.required, Validators.min(0)]),
-    prepTime: new FormControl(null, [Validators.required, Validators.min(0)]),
-    cookingTime: new FormControl(null, [Validators.required, Validators.min(0)])
-  });
-   -->

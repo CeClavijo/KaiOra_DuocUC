@@ -17,7 +17,7 @@ import { BottomTabsComponent } from './components/bottom-tabs/bottom-tabs.compon
     HeaderComponent,
     CustomInputComponent,
     LogoComponent,
-    AddUpdateRecipeComponent
+    AddUpdateRecipeComponent,
     CreateCourseModalComponent,
     SidebarNavComponent,
     BottomTabsComponent
@@ -27,7 +27,7 @@ import { BottomTabsComponent } from './components/bottom-tabs/bottom-tabs.compon
     CustomInputComponent,
     ReactiveFormsModule,
     LogoComponent,
-    AddUpdateRecipeComponent
+    AddUpdateRecipeComponent,
     CreateCourseModalComponent,
     SidebarNavComponent,
     BottomTabsComponent

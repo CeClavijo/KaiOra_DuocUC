@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe.model';
-import { UtilsService } from 'src/app/services/utils';
+import { Utils } from 'src/app/services/utils';
 import { AddUpdateRecipeComponent } from 'src/app/shared/components/add-update-recipe/add-update-recipe.component';
 
 @Component({
@@ -11,14 +11,9 @@ import { AddUpdateRecipeComponent } from 'src/app/shared/components/add-update-r
 })
 export class HomePage implements OnInit {
 
-  utilsSvc = inject(UtilsService);
+  utilsSvc = inject(Utils);
 
   ngOnInit() {
-  }
-
-  //funcion vacia / necesaria para evitar problemas de compilacion
-  click() {
-    console.log("ok")
   }
 
   async addUpdateRecipe(recipe?: Recipe) {
@@ -28,5 +23,4 @@ export class HomePage implements OnInit {
       componentProps: { recipe }
     })
   }
-
 }
