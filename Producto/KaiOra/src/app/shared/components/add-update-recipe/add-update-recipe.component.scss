@@ -64,13 +64,16 @@
 // para todas las demas opciones del formulario
 
 .custom-form-card {
-  margin: 0;
+  margin: 0 !important;
+  margin-bottom: 12px !important;
   border-radius: 16px;
-  margin-bottom: 20px;
+}
 
-  &:last-child {
-    margin-bottom: 0;
-  }
+.left-form-column,
+.right-form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .field-container {
@@ -115,7 +118,7 @@
     width: 100%;
   }
 
-  &::part(placeholder), 
+  &::part(placeholder),
   &::part(text) {
     text-align: left;
     flex: 1;
@@ -303,7 +306,7 @@
 
 // Para el estado del formulario
 .status-card {
-  --background: #e5e7eb;
+  --background: #9d9d9d;
 
   .status-header {
     font-size: 11px;
@@ -334,10 +337,35 @@
   }
 
   .progress-pcc {
-  --progress-background: #632010; 
-  --buffer-background: #c8ced0; 
-  color: #632010;
-  height: 6px;
-  border-radius: 10px;
+    --progress-background: #632010;
+    --buffer-background: #c8ced0;
+    color: #632010;
+    height: 6px;
+    border-radius: 10px;
+  }
+}
+
+@media (min-width: 992px) {
+
+  .form-grid-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .left-form-column, .right-form-column {
+    padding: 0 12px !important; 
+  }
+
+  .pcc-card {
+    order: 1;
+  }
+
+  .key-points-card {
+    order: 2;
+  }
+
+  .status-card {
+    order: 3;
   }
 }
