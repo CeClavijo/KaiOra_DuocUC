@@ -41,6 +41,10 @@ export class AddUpdateRecipeComponent implements OnInit {
 
   ngOnInit() {}
 
+  dismissModal() {
+    this.utilsSvc.dismissModal();
+  }
+
   // Logica de la categoria de ingredientes
   // Obtencion del array para el html
 

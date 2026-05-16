@@ -1,4 +1,4 @@
-<app-header [isModal]="true" title="Agregar Receta"></app-header>
+<app-header title="Agregar Receta"></app-header>
 
 <ion-content>
   <form [formGroup]="form" class="ion-padding ion-text-center">
@@ -9,7 +9,7 @@
 
         <p class="modal-description">Configura los parámetros técnicos y de seguridad alimentaria para tu creación culinaria.</p>
         <div class="header-actions-row">
-          <ion-button fill="outline" class="btn-discard">Descartar</ion-button>
+          <ion-button fill="outline" class="btn-discard" (click)="dismissModal()">Descartar</ion-button>
           <ion-button mode="ios" class="btn-create" (click)="createTechSheet()">
             <ion-icon slot="start" name="save-outline"></ion-icon>
             Guardar Ficha

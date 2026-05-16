@@ -10,13 +10,9 @@ import { Utils } from 'src/app/services/utils';
 export class HeaderComponent  implements OnInit {
 
   @Input() title!: string;
-  @Input() isModal!: boolean;
 
   utilsSvc = inject(Utils)
 
   ngOnInit() {}
-
-  dismissModal() {
-    this.utilsSvc.dismissModal();
-  }
+  
 }

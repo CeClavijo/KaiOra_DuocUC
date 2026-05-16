@@ -1,91 +1,115 @@
 <app-header title="Inicio Profesor"></app-header>
 
 <ion-content class="ion-padding">
-  <h2>Bienvenido Chef</h2>
-  <p>Administra tus fichas técnicas y supervisa el progreso de tus módulos de formación culinaria.</p>
+  <div class="header-actions-container">
+    <div class="welcome-text">
+      <h2>Bienvenido Chef</h2>
+      <p>Administra tus fichas técnicas y supervisa el progreso de tus módulos de formación culinaria.</p>
+    </div>
 
-  <ion-button (click)="addUpdateRecipe()" expand="block" mode="ios" class="add-button-custom">
-    <ion-icon slot="start" name="add-outline"></ion-icon>
-    Crear nueva ficha
-  </ion-button>
+    <div class="button-wrapper">
+      <ion-button (click)="addUpdateRecipe()" expand="block" mode="ios" class="add-button-custom">
+        <ion-icon slot="start" name="add-outline"></ion-icon>
+        Crear nueva ficha
+      </ion-button>
+    </div>
+  </div>
 
   <!-- ion card info -->
 
-  <ion-card>
-    <ion-card-header>
-      <ion-item lines="none" detail="false">
-        <ion-icon name="book-outline" slot="end" class="info-color"></ion-icon>
-        <ion-label>
-          <ion-card-subtitle class="info-color">TOTAL FICHAS</ion-card-subtitle>
-          <ion-card-title>24</ion-card-title>
-        </ion-label>
-      </ion-item>
-    </ion-card-header>
-  </ion-card>
+  <ion-grid class="main-grid ion-no-padding">
+    <ion-row>
+      <ion-col size="12" sizeMd="6" sizeLg="3">
+        <ion-card class="stat-card">
+          <ion-card-header>
+            <ion-item lines="none" detail="false">
+              <ion-icon name="book-outline" slot="end" class="info-color"></ion-icon>
+              <ion-label>
+                <ion-card-subtitle class="info-color">TOTAL FICHAS</ion-card-subtitle>
+                <ion-card-title>24</ion-card-title>
+              </ion-label>
+            </ion-item>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-item lines="none" detail="false">
-        <ion-icon name="eye-outline" slot="end" class="view-color"></ion-icon>
-        <ion-label>
-          <ion-card-subtitle class="view-color">VISITAS TOTALES</ion-card-subtitle>
-          <ion-card-title>1.2k</ion-card-title>
-        </ion-label>
-      </ion-item>
-    </ion-card-header>
-  </ion-card>
+      <ion-col size="12" sizeMd="6" sizeLg="3">
+        <ion-card class="stat-card">
+          <ion-card-header>
+            <ion-item lines="none" detail="false">
+              <ion-icon name="eye-outline" slot="end" class="view-color"></ion-icon>
+              <ion-label>
+                <ion-card-subtitle class="view-color">VISITAS TOTALES</ion-card-subtitle>
+                <ion-card-title>1.2k</ion-card-title>
+              </ion-label>
+            </ion-item>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-item lines="none" detail="false">
-        <ion-icon name="star" slot="end" class="grade-color"></ion-icon>
-        <ion-label>
-          <ion-card-subtitle class="grade-color">MEDIA CALIFICACIÓN</ion-card-subtitle>
-          <ion-card-title>4.9</ion-card-title>
-        </ion-label>
-      </ion-item>
-    </ion-card-header>
-  </ion-card>
+      <ion-col size="12" sizeMd="6" sizeLg="3">
+        <ion-card class="stat-card">
+          <ion-card-header>
+            <ion-item lines="none" detail="false">
+              <ion-icon name="star" slot="end" class="grade-color"></ion-icon>
+              <ion-label>
+                <ion-card-subtitle class="grade-color">MEDIA CALIFICACIÓN</ion-card-subtitle>
+                <ion-card-title>4.9</ion-card-title>
+              </ion-label>
+            </ion-item>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-item lines="none" detail="false">
-        <ion-icon name="document-text-outline" slot="end" class="info-color"></ion-icon>
-        <ion-label>
-          <ion-card-subtitle class="info-color">EN REVISIÓN</ion-card-subtitle>
-          <ion-card-title>3</ion-card-title>
-        </ion-label>
-      </ion-item>
-    </ion-card-header>
-  </ion-card>
+      <ion-col size="12" sizeMd="6" sizeLg="3">
+        <ion-card class="stat-card">
+          <ion-card-header>
+            <ion-item lines="none" detail="false">
+              <ion-icon name="document-text-outline" slot="end" class="info-color"></ion-icon>
+              <ion-label>
+                <ion-card-subtitle class="info-color">EN REVISIÓN</ion-card-subtitle>
+                <ion-card-title>3</ion-card-title>
+              </ion-label>
+            </ion-item>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <!-- ion card recetas -->
-  <ion-card>
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-
-    <ion-card-content>
-      <div class="card-metadata">
-        <ion-badge color="warning" mode="ios">PB-04 • AVANZADO</ion-badge>
-
-        <div class="views-container">
-          <ion-icon name="eye-outline"></ion-icon>
-          <span class="views-count">482 visitas</span>
+  <ion-row class="ion-margin-top">
+    <ion-col size="12" sizeMd="6" sizeLg="4" sizeXl="3" *ngFor="let i of [1,2,3]">
+      <ion-card class="recipe-card">
+        <div class="image-wrapper">
+          <img alt="Receta" src="https://ionicframework.com/docs/img/demos/card-media.png" />
         </div>
-      </div>
 
-      <h2 class="card-title">Tarta de Frutos Rojos y Crema Mousseline</h2>
-    <p class="card-subtitle">
-      Un clásico de la pastelería que integra técnica de masa quebrada...
-    </p>
-    </ion-card-content>
+        <ion-card-content>
+          <div class="card-metadata">
+            <ion-badge color="warning" mode="ios">PB-04 • AVANZADO</ion-badge>
 
-    <ion-button fill="clear">
-      <ion-icon slot="start" name="pencil-outline"></ion-icon>
-      Editar
-    </ion-button>
-    <ion-button fill="clear">
-      <ion-icon slot="start" name="share-social-outline"></ion-icon>
-      Compartir
-    </ion-button>
-  </ion-card>
+            <div class="views-container">
+              <ion-icon name="eye-outline"></ion-icon>
+              <span class="views-count">482 visitas</span>
+            </div>
+          </div>
+
+          <h2 class="card-title">Tarta de Frutos Rojos y Crema Mousseline</h2>
+          <p class="card-subtitle">
+            Un clásico de la pastelería que integra técnica de masa quebrada...
+          </p>
+        </ion-card-content>
+
+        <ion-button fill="clear">
+          <ion-icon slot="start" name="pencil-outline"></ion-icon>
+          Editar
+        </ion-button>
+        <ion-button fill="clear">
+          <ion-icon slot="start" name="share-social-outline"></ion-icon>
+          Compartir
+        </ion-button>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>
