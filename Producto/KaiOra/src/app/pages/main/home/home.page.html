@@ -40,7 +40,7 @@
               <ion-icon name="eye-outline" slot="end" class="view-color"></ion-icon>
               <ion-label>
                 <ion-card-subtitle class="view-color">VISITAS TOTALES</ion-card-subtitle>
-                <ion-card-title>{{ totalViews }}</ion-card-title>
+                <ion-card-title>{{ formatViews(totalViews) }}</ion-card-title>
               </ion-label>
             </ion-item>
           </ion-card-header>
@@ -91,7 +91,7 @@
 
             <div class="views-container">
               <ion-icon name="eye-outline"></ion-icon>
-              <span class="views-count">{{ t.views || 0 }}</span>
+              <span class="views-count">{{ formatViews(t.views || 0) }}</span>
             </div>
           </div>
 
