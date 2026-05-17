@@ -155,7 +155,7 @@ export class FirebaseService {
 
   // =================== Base de datos ===================
   // ================== Fichas Tecnicas ==================
-  getCollectiondata(path: string, collectionQuery?: any) {
+  getCollectionData(path: string, collectionQuery?: any) {
     const ref = collection(getFirestore(), path);
     return collectionData(query(ref, ...collectionQuery))
   }

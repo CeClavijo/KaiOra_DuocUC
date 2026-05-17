@@ -1,7 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe.model';
+import { FirebaseService } from 'src/app/services/firebase.service';
 import { Utils } from 'src/app/services/utils';
 import { AddUpdateRecipeComponent } from 'src/app/shared/components/add-update-recipe/add-update-recipe.component';
+import { orderBy, where } from 'firebase/firestore'
 
 @Component({
   selector: 'app-home',
@@ -12,8 +14,48 @@ import { AddUpdateRecipeComponent } from 'src/app/shared/components/add-update-r
 export class HomePage implements OnInit {
 
   utilsSvc = inject(Utils);
+  firebaseSvc = inject(FirebaseService);
+
+  recipes: Recipe[] = [];
+  loading: boolean = false;
+  totalRecipes: number = 0;
+  totalViews: number = 0;
+  avgGrades: number = 0;
+  onRevision: number = 0;
 
   ngOnInit() {
+  }
+
+  getRecipes() {
+    let path = `technical-sheets`;
+
+    this.loading = true;
+
+    let query = [
+      orderBy('name')
+    ]
+
+    let sub = this.firebaseSvc.getCollectionData(path, query).subscribe({
+      next: (res: any) => {
+        this.recipes = res;
+
+        // Matematicas para los 4 atributos del inicio de la pagina
+        this.totalRecipes = this.recipes.length;
+
+        this.totalViews = this.recipes.reduce((sum, recipe) => {
+          return sum + (recipe.views || 0)
+        }, 0);
+
+
+        this.loading = false;
+
+        sub.unsubscribe();
+      }
+    })
+  }
+
+  ionViewWillEnter() {
+    this.getRecipes();
   }
 
   async addUpdateRecipe(recipe?: Recipe) {
@@ -22,5 +64,7 @@ export class HomePage implements OnInit {
       cssClass: 'add-update-modal',
       componentProps: { recipe }
     })
+
+    if (success) this.getRecipes();
   }
 }

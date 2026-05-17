@@ -26,7 +26,7 @@
               <ion-icon name="book-outline" slot="end" class="info-color"></ion-icon>
               <ion-label>
                 <ion-card-subtitle class="info-color">TOTAL FICHAS</ion-card-subtitle>
-                <ion-card-title>24</ion-card-title>
+                <ion-card-title>{{ totalRecipes }}</ion-card-title>
               </ion-label>
             </ion-item>
           </ion-card-header>
@@ -40,7 +40,7 @@
               <ion-icon name="eye-outline" slot="end" class="view-color"></ion-icon>
               <ion-label>
                 <ion-card-subtitle class="view-color">VISITAS TOTALES</ion-card-subtitle>
-                <ion-card-title>1.2k</ion-card-title>
+                <ion-card-title>{{ totalViews }}</ion-card-title>
               </ion-label>
             </ion-item>
           </ion-card-header>
@@ -79,10 +79,10 @@
 
   <!-- ion card recetas -->
   <ion-row class="ion-margin-top">
-    <ion-col size="12" sizeMd="6" sizeLg="4" sizeXl="3" *ngFor="let i of [1,2,3]">
+    <ion-col size="12" sizeMd="6" sizeLg="4" sizeXl="3" *ngFor="let t of recipes">
       <ion-card class="recipe-card">
         <div class="image-wrapper">
-          <img alt="Receta" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          <img alt="Receta" [src]="t.imageURL || 'https://ionicframework.com/docs/img/demos/card-media.png'" />
         </div>
 
         <ion-card-content>
@@ -91,11 +91,11 @@
 
             <div class="views-container">
               <ion-icon name="eye-outline"></ion-icon>
-              <span class="views-count">482 visitas</span>
+              <span class="views-count">{{ t.views || 0 }}</span>
             </div>
           </div>
 
-          <h2 class="card-title">Tarta de Frutos Rojos y Crema Mousseline</h2>
+          <h2 class="card-title">{{ t.name || 'Titulo de la receta' }}</h2>
           <p class="card-subtitle">
             Un clásico de la pastelería que integra técnica de masa quebrada...
           </p>
