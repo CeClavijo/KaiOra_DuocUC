@@ -25,6 +25,9 @@
           <!-- Primera seccion del formulario -->
           <ion-card mode="ios" class="custom-form-card">
             <ion-card-content>
+              <!-- Imagen (en este caso se trabajara con imagenes en Base64, posible cambio a futuro) -->
+               .field-container>ion-
+
               <!-- nombre -->
               <div class="field-container">
                 <ion-label class="custom-label">Nombre de la Receta</ion-label>
@@ -39,8 +42,7 @@
                 <ion-item fill="outline" mode="md" class="custom-input-item">
                   <ion-select formControlName="category" interface="popover" placeholder="Selecciona una opcion..."
                     toggle-icon="chevron-down-outline" class="category-select">
-                    <ion-select-option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name
-                      }}</ion-select-option>
+                    <ion-select-option *ngFor="let cat of categories" [value]="cat.name">{{ cat.name }}</ion-select-option>
                   </ion-select>
                 </ion-item>
               </div>

@@ -117,11 +117,12 @@ export class AddUpdateRecipeComponent implements OnInit {
       ...formValues,
       profesorId: '',
       profesorName: 'Profesor Desconocido',
-      status: 'Activa',
+      status: 'En Revisión',
       createdAt: new Date(),
       updatedAt: new Date(),
       views: 0,
-      cursos: []
+      cursos: [],
+      imageURL: ''
     };
 
     this.firebaseSvc.addDocument(path, recipeData).then(async res => {
