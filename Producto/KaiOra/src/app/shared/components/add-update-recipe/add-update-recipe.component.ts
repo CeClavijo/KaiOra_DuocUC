@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Recipe } from 'src/app/models/recipe.model';
 import { Utils } from 'src/app/services/utils';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { collection, doc, getFirestore } from 'firebase/firestore';
 
 @Component({
   selector: 'app-add-update-recipe',
@@ -107,7 +108,15 @@ export class AddUpdateRecipeComponent implements OnInit {
     const loading = await this.utilsSvc.loading();
     await loading.present();
 
-    const path = 'technical-sheets';
+    let path = 'technical-sheets';
+
+    let id = this.form.value.id;
+    if (!id) {
+      const newDocRef = doc(collection(getFirestore(), path));
+      id = newDocRef.id;
+
+      this.form.controls.id.setValue(id);
+    }
 
     const formValues = this.form.value;
 
@@ -125,7 +134,7 @@ export class AddUpdateRecipeComponent implements OnInit {
       imageURL: ''
     };
 
-    this.firebaseSvc.addDocument(path, recipeData).then(async res => {
+    this.firebaseSvc.setDocument(`${path}/${id}`, recipeData).then(async res => {
       this.utilsSvc.presentToast({
         message: 'Ficha técnica creada exitosamente',
         duration: 1500,
@@ -144,6 +153,34 @@ export class AddUpdateRecipeComponent implements OnInit {
         icon: 'alert-circle-outline'
       });
     }).finally(() =>{
+      loading.dismiss();
+    })
+  }
+
+  async updateTechSheet() {
+    let path = `technical-sheets/${this.techSheet.id}`;
+
+    const loading = await this.utilsSvc.loading();
+    await loading.present();
+
+    this.firebaseSvc.updateDocument(path, this.form.value).then(async res => {
+
+      this.utilsSvc.dismissModal({ success: true });
+
+      this.utilsSvc.presentToast({
+        message: 'Ficha técnica actualizada exitosamente',
+        duration: 1500,
+        color: 'success',
+        icon: 'cheackmark-circle-outline'
+      });
+    }).catch(error => {
+      this.utilsSvc.presentToast({
+        message: 'Error de conexion. Intentalo de nuevo',
+        duration: 2500,
+        color: 'danger',
+        icon: 'alert-circle-outline'
+      });
+    }).finally(() => {
       loading.dismiss();
     })
   }
